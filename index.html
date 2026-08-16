@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!-- =====================================================
+         CONFIGURACIÓN
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>TODO ACERO | Joyería</title>
+
+
+    <!-- =====================================================
+         FUENTES
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+
+
+    <!-- =====================================================
+         ESTILOS
+    ====================================================== -->
+
+    <style>
+
+        /* =====================================================
+           CONFIGURACIÓN GENERAL
+        ====================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            background: #f8f5f1;
+            color: #211e1c;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+
+        /* =====================================================
+           PANTALLA DE CARGA
+        ====================================================== */
+
+        #loader {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: #171412;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            z-index: 9999;
+
+            transition: opacity 1s ease,
+                        visibility 1s ease;
+        }
+
+
+        .loader-content {
+
+            text-align: center;
+
+            color: white;
+
+            animation: aparecer 1.5s ease;
+        }
+
+
+        .loader-text {
+
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: clamp(25px, 5vw, 55px);
+
+            letter-spacing: 5px;
+
+            font-weight: 500;
+        }
+
+
+        .loader-text span {
+
+            color: #c5a46d;
+
+            margin: 0 15px;
+        }
+
+
+        .loader-sub {
+
+            margin-top: 25px;
+
+            font-size: 10px;
+
+            letter-spacing: 5px;
+
+            color: #aaa;
+
+            text-transform: uppercase;
+        }
+
+
+        #loader.ocultar {
+
+            opacity: 0;
+
+            visibility: hidden;
+        }
+
+
+        @keyframes aparecer {
+
+            from {
+
+                opacity: 0;
+
+                transform: translateY(20px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: translateY(0);
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           BARRA SUPERIOR
+        ====================================================== */
+
+        nav {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 75px;
+
+            background: rgba(248, 245, 241, 0.94);
+
+            backdrop-filter: blur(10px);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            z-index: 1000;
+
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+
+        .logo {
+
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 32px;
+
+            letter-spacing: 5px;
+
+            font-weight: 600;
+
+            color: #211e1c;
+
+            text-decoration: none;
+        }
+
+
+        .menu {
+
+            display: flex;
+
+            gap: 35px;
+
+            list-style: none;
+        }
+
+
+        .menu a {
+
+            color: #211e1c;
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            transition: 0.3s;
+        }
+
+
+        .menu a:hover {
+
+            color: #a88a5b;
+        }
+
+
+
+        /* =====================================================
+           PORTADA
+        ====================================================== */
+
+        .hero {
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    rgba(20, 15, 13, 0.48),
+                    rgba(20, 15, 13, 0.55)
+                ),
+                url("assets/joya2.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: white;
+
+            padding: 100px 20px 50px;
+        }
+
+
+        .hero-content {
+
+            max-width: 800px;
+
+            animation: subir 1.5s ease;
+        }
+
+
+        .hero-small {
+
+            font-size: 11px;
+
+            letter-spacing: 6px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 25px;
+        }
+
+
+        .hero h1 {
+
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: clamp(70px, 13vw, 150px);
+
+            font-weight: 500;
+
+            line-height: 0.8;
+
+            letter-spacing: 8px;
+        }
+
+
+        .hero p {
+
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 26px;
+
+            margin: 35px auto;
+
+            max-width: 600px;
+
+            line-height: 1.4;
+        }
+
+
+        .hero-button {
+
+            display: inline-block;
+
+            border: 1px solid white;
+
+            padding: 15px 35px;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            transition: 0.4s;
+        }
+
+
+        .hero-button:hover {
+
+            background: white;
+
+            color: #211e1c;
+        }
+
+
+        @keyframes subir {
+
+            from {
+
+                opacity: 0;
+
+                transform: translateY(40px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: translateY(0);
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           PRESENTACIÓN
+        ====================================================== */
+
+        .presentacion {
+
+            text-align: center;
+
+            max-width: 750px;
+
+            margin: auto;
+
+            padding: 100px 20px 50px;
+        }
+
+
+        .etiqueta {
+
+            font-size: 10px;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            color: #a88a5b;
+
+            margin-bottom: 15px;
+        }
+
+
+        .presentacion h2 {
+
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: clamp(40px, 6vw, 65px);
+
+            font-weight: 500;
+
+            margin-bottom: 20px;
+        }
+
+
+        .presentacion p {
+
+            color: #756f6a;
+
+            line-height: 1.9;
+
+            font-size: 14px;
+        }
+
+
+
+        /* =====================================================
+           CATÁLOGO
+        ====================================================== */
+
+        .catalogo {
+
+            padding: 40px 7% 110px;
+        }
+
+
+        .productos {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 28px;
+        }
+
+
+
+        /* =====================================================
+           TARJETA DE PRODUCTO
+        ====================================================== */
+
+        .producto {
+
+            background: white;
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition: 0.4s;
+
+            box-shadow:
+                0 10px 35px rgba(0,0,0,0.07);
+        }
+
+
+        .producto:hover {
+
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 20px 45px rgba(0,0,0,0.13);
+        }
+
+
+        .foto {
+
+            width: 100%;
+
+            aspect-ratio: 1 / 1;
+
+            overflow: hidden;
+
+            background: #eee;
+        }
+
+
+        .foto img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: 0.6s;
+        }
+
+
+        .producto:hover .foto img {
+
+            transform: scale(1.06);
+        }
+
+
+        .informacion {
+
+            padding: 23px;
+        }
+
+
+        .categoria {
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            color: #a88a5b;
+        }
+
+
+        .producto h3 {
+
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 29px;
+
+            font-weight: 600;
+
+            margin: 8px 0;
+        }
+
+
+        .descripcion {
+
+            font-size: 11px;
+
+            color: #777;
+
+            line-height: 1.7;
+
+            min-height: 38px;
+        }
+
+
+        .precio {
+
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 28px;
+
+            margin-top: 15px;
+
+            color: #211e1c;
+        }
+
+
+.boton-messenger {
+
+    display: block;
+
+    background: #211e1c;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 13px;
+
+    margin-top: 17px;
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    transition: 0.3s;
+}
+
+
+.boton-messenger:hover {
+
+    background: #a88a5b;
+
+}
+
+
+        /* =====================================================
+           SECCIÓN DESTACADA
+        ====================================================== */
+
+        .destacada {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            background: #211e1c;
+
+            color: white;
+        }
+
+
+        .destacada-imagen {
+
+            min-height: 600px;
+
+            background:
+                url("assets/joya1.jpg")
+                center / cover no-repeat;
+        }
+
+
+        .destacada-texto {
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            padding: 80px 12%;
+        }
+
+
+        .destacada-texto .etiqueta {
+
+            color: #c5a46d;
+        }
+
+
+        .destacada-texto h2 {
+
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: clamp(45px, 6vw, 70px);
+
+            font-weight: 500;
+
+            line-height: 1;
+
+            margin-bottom: 25px;
+        }
+
+
+        .destacada-texto p {
+
+            color: #cfc8c2;
+
+            line-height: 1.9;
+
+            font-size: 13px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .boton-claro {
+
+            display: inline-block;
+
+            border: 1px solid white;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 14px 28px;
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            width: fit-content;
+
+            transition: 0.3s;
+        }
+
+
+        .boton-claro:hover {
+
+            background: white;
+
+            color: #211e1c;
+        }
+
+
+
+        /* =====================================================
+           PIE DE PÁGINA
+        ====================================================== */
+
+        footer {
+
+            text-align: center;
+
+            padding: 60px 20px;
+
+            background: #eee9e3;
+        }
+
+
+        footer h2 {
+
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 35px;
+
+            letter-spacing: 5px;
+
+            font-weight: 500;
+        }
+
+
+        footer p {
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            color: #777;
+
+            margin-top: 10px;
+        }
+
+
+
+        /* =====================================================
+           TABLET
+        ====================================================== */
+
+        @media (max-width: 1000px) {
+
+            .productos {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           CELULAR
+        ====================================================== */
+
+        @media (max-width: 600px) {
+
+            nav {
+
+                height: 65px;
+
+                padding: 0 20px;
+
+            }
+
+
+            .logo {
+
+                font-size: 25px;
+
+            }
+
+
+            .menu {
+
+                gap: 12px;
+
+            }
+
+
+            .menu a {
+
+                font-size: 8px;
+
+            }
+
+
+            .hero {
+
+                min-height: 90vh;
+
+            }
+
+
+            .hero h1 {
+
+                letter-spacing: 4px;
+
+            }
+
+
+            .hero p {
+
+                font-size: 21px;
+
+            }
+
+
+            .productos {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .destacada {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .destacada-imagen {
+
+                min-height: 400px;
+
+            }
+
+
+            .destacada-texto {
+
+                padding: 60px 30px;
+
+            }
+
+
+            .loader-text {
+
+                letter-spacing: 2px;
+
+            }
+
+
+            .loader-text span {
+
+                margin: 0 5px;
+
+            }
+
+        }
+
+        /* =====================================================
+   VISOR DE FOTOGRAFÍAS
+===================================================== */
+
+.visor-imagen {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(15, 12, 10, 0.94);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    z-index: 10000;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.3s ease;
+}
+
+
+/* Cuando se abre */
+
+.visor-imagen.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Imagen grande */
+
+.imagen-grande {
+    max-width: 90%;
+    max-height: 88vh;
+
+    object-fit: contain;
+
+    border-radius: 3px;
+
+    box-shadow:
+        0 20px 80px rgba(0, 0, 0, 0.5);
+
+    transform: scale(0.92);
+
+    transition: 0.35s ease;
+}
+
+
+.visor-imagen.activo .imagen-grande {
+    transform: scale(1);
+}
+
+
+/* Botón cerrar */
+
+.cerrar-imagen {
+
+    position: absolute;
+
+    top: 25px;
+    right: 30px;
+
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid rgba(255,255,255,0.5);
+
+    background: rgba(0,0,0,0.25);
+
+    color: white;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.3s;
+}
+
+
+.cerrar-imagen:hover {
+
+    background: white;
+
+    color: #211e1c;
+}
+
+
+/* Cursor de las fotos */
+
+.foto {
+
+    cursor: zoom-in;
+}
+
+
+/* Celular */
+
+@media (max-width: 600px) {
+
+    .visor-imagen {
+
+        padding: 15px;
+
+    }
+
+    .imagen-grande {
+
+        max-width: 96%;
+
+        max-height: 82vh;
+
+    }
+
+    .cerrar-imagen {
+
+        top: 15px;
+
+        right: 15px;
+
+        width: 40px;
+
+        height: 40px;
+
+    }
+
+}
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         PANTALLA DE CARGA
+
+         AQUÍ APARECE:
+
+         MODA ◆ ELEGANCIA ◆ ESTILO
+    ====================================================== -->
+
+    <div id="loader">
+
+        <div class="loader-content">
+
+            <div class="loader-text">
+
+                MODA
+
+                <span>◆</span>
+
+                ELEGANCIA
+
+                <span>◆</span>
+
+                ESTILO
+
+            </div>
+
+
+            <div class="loader-sub">
+
+                Descubre nuestra colección
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MENÚ
+    ====================================================== -->
+
+    <nav>
+
+        <a href="#" class="logo">
+            
+        </a>
+
+
+        <ul class="menu">
+
+            <li>
+                <a href="#inicio">
+                    Inicio
+                </a>
+            </li>
+
+            <li>
+                <a href="#coleccion">
+                    Colección
+                </a>
+            </li>
+
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         PORTADA
+    ====================================================== -->
+
+    <header class="hero" id="inicio">
+
+        <div class="hero-content">
+
+            <div class="hero-small">
+
+                Joyería seleccionada
+
+            </div>
+
+
+            <h1>
+
+                TODO ACERO
+
+            </h1>
+
+
+            <p>
+
+                Detalles que transforman
+                un look.
+
+            </p>
+
+
+            <a
+                href="#coleccion"
+                class="hero-button">
+
+                Descubrir colección
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         PRESENTACIÓN
+    ====================================================== -->
+
+    <section class="presentacion">
+
+        <div class="etiqueta">
+
+            Nuestra colección
+
+        </div>
+
+
+        <h2>
+
+            Elegancia en cada detalle
+
+        </h2>
+
+
+        <p>
+
+            Descubre piezas seleccionadas
+            para complementar tu estilo.
+            Diseños modernos, delicados y
+            versátiles para cada ocasión.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CATÁLOGO DE 10 JOYAS
+    ====================================================== -->
+
+    <section class="catalogo" id="coleccion">
+
+        <div class="productos">
+
+
+
+            <!-- =================================================
+                 JOYA 1
+            ================================================== -->
+
+            <article class="producto">
+
+                <div class="foto">
+
+                    <img
+                        src="assets/joya1.jpg"
+                        alt="Juego de corazones">
+
+                </div>
+
+
+                <div class="informacion">
+
+                    <div class="categoria">
+
+                        Acero inoxidable
+
+                    </div>
+
+
+                    <h3>
+
+                        Corazones
+
+                    </h3>
+
+
+                    <p class="descripcion">
+
+                        Elegante juego con collar
+                        y aretes en forma de corazón.
+
+                    </p>
+
+
+                    <div class="precio">
+
+                        $5
+
+                    </div>
+
+
+                   <a
+    class="boton-messenger"
+    href="https://m.me/blanquita.torres.90"
+    target="_blank">
+
+    Consultar por Messenger
+
+</a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 JOYA 2
+            ================================================== -->
+
+            <article class="producto">
+
+                <div class="foto">
+
+                    <img
+                        src="assets/joya2.jpg"
+                        alt="Juego azul">
+
+                </div>
+
+
+                <div class="informacion">
+
+                    <div class="categoria">
+
+                        Edición especial
+
+                    </div>
+
+
+                    <h3>
+
+                        Azul Geométrico
+
+                    </h3>
+
+
+                    <p class="descripcion">
+
+                        Colgante geométrico azul
+                        acompañado de dos aretes.
+
+                    </p>
+
+
+                    <div class="precio">
+
+                        $5
+
+                    </div>
+
+
+                      <a
+    class="boton-messenger"
+    href="https://m.me/blanquita.torres.90"
+    target="_blank">
+
+    Consultar por Messenger
+
+</a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 JOYA 3
+            ================================================== -->
+
+            <article class="producto">
+
+                <div class="foto">
+
+                    <img
+                        src="assets/joya3.jpg"
+                        alt="Anillos talla 10">
+
+                </div>
+
+
+                <div class="informacion">
+
+                    <div class="categoria">
+
+                        Unisex · Talla 10
+
+                    </div>
+
+
+                    <h3>
+
+                        Anillos
+
+                    </h3>
+
+
+                    <p class="descripcion">
+
+                        Diseños variados para
+                        complementar cualquier estilo.
+
+                    </p>
+
+
+                    <div class="precio">
+
+                        $3 c/u
+
+                    </div>
+
+
+                     <a
+    class="boton-messenger"
+    href="https://m.me/blanquita.torres.90"
+    target="_blank">
+
+    Consultar por Messenger
+
+</a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 JOYA 4
+            ================================================== -->
+
+            <article class="producto">
+
+                <div class="foto">
+
+                    <img
+                        src="assets/joya4.jpg"
+                        alt="Anillos talla 11">
+
+                </div>
+
+
+                <div class="informacion">
+
+                    <div class="categoria">
+
+                        Talla 11
+
+                    </div>
+
+
+                    <h3>
+
+                        Set de Anillos
+
+                    </h3>
+
+
+                    <p class="descripcion">
+
+                        Diseños elegantes con
+                        anillo dorado ajustable.
+
+                    </p>
+
+
+                    <div class="precio">
+
+                        $3
+
+                    </div>
+
+
+                    <a
+    class="boton-messenger"
+    href="https://m.me/blanquita.torres.90"
+    target="_blank">
+
+    Consultar por Messenger
+
+</a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 JOYA 5
+            ================================================== -->
+
+            <article class="producto">
+
+                <div class="foto">
+
+                    <img
+                        src="assets/joya5.jpg"
+                        alt="Collar largo">
+
+                </div>
+
+
+                <div class="informacion">
+
+                    <div class="categoria">
+
+                        Collar
+
+                    </div>
+
+
+                    <h3>
+
+                        Círculo & Detalles
+
+                    </h3>
+
+
+                    <p class="descripcion">
+
+                        Collar largo en tono plateado
+                        con detalles delicados.
+
+                    </p>
+
+
+                    <div class="precio">
+
+                        $5
+
+                    </div>
+
+
+                     <a
+    class="boton-messenger"
+    href="https://m.me/blanquita.torres.90"
+    target="_blank">
+
+    Consultar por Messenger
+
+</a>
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 JOYA 6
+            ================================================== -->
+
+            <article class="producto">
+
+                <div class="foto">
+
+                    <img
+                        src="assets/joya6.jpg"
+                        alt="Collar de cruces">
+
+                </div>
+
+
+                <div class="informacion">
+
+                    <div class="categoria">
+
+                        Doble cadena
+
+                    </div>
+
+
+                    <h3>
+
+                        Cruces
+
+                    </h3>
+
+
+                    <p class="descripcion">
+
+                        Collar de doble cadena
+                        con detalles de cruz.
+
+                    </p>
+
+
+                    <div class="precio">
+
+                        Consultar
+
+                    </div>
+
+  <a
+    class="boton-messenger"
+    href="https://m.me/blanquita.torres.90"
+    target="_blank">
+
+    Consultar por Messenger
+
+</a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 JOYA 7
+            ================================================== -->
+
+            <article class="producto">
+
+                <div class="foto">
+
+                    <img
+                        src="assets/joya7.jpg"
+                        alt="Corazones entrelazados">
+
+                </div>
+
+
+                <div class="informacion">
+
+                    <div class="categoria">
+
+                        Diseño romántico
+
+                    </div>
+
+
+                    <h3>
+
+                        Corazones Entrelazados
+
+                    </h3>
+
+
+                    <p class="descripcion">
+
+                        Diseño en tonos plateado
+                        y dorado.
+
+                    </p>
+
+
+                    <div class="precio">
+
+                        $4
+
+                    </div>
+
+
+               <a
+    class="boton-messenger"
+    href="https://m.me/blanquita.torres.90"
+    target="_blank">
+
+    Consultar por Messenger
+
+</a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 JOYA 8
+            ================================================== -->
+
+            <article class="producto">
+
+                <div class="foto">
+
+                    <img
+                        src="assets/joya8.jpg"
+                        alt="Collar de esferas">
+
+                </div>
+
+
+                <div class="informacion">
+
+                    <div class="categoria">
+
+                        Minimalista
+
+                    </div>
+
+
+                    <h3>
+
+                        Esferas
+
+                    </h3>
+
+
+                    <p class="descripcion">
+
+                        Cadena fina con detalles
+                        esféricos.
+
+                    </p>
+
+
+                    <div class="precio">
+
+                        Consultar
+
+                    </div>
+
+
+ <a
+    class="boton-messenger"
+    href="https://m.me/blanquita.torres.90?ref=joya8_esferas"
+    target="_blank"
+    rel="noopener noreferrer">
+    💬 Me interesa esta pieza
+</a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SECCIÓN ESPECIAL
+    ====================================================== -->
+
+    <section class="destacada">
+
+        <div class="destacada-imagen">
+        </div>
+
+
+        <div class="destacada-texto">
+
+            <div class="etiqueta">
+
+                Detalles para ti
+
+            </div>
+
+
+            <h2>
+
+                Tu estilo
+                merece algo
+                especial.
+
+            </h2>
+
+
+            <p>
+
+                Una joya puede transformar
+                completamente un look.
+                Encuentra esa pieza que
+                representa tu personalidad.
+
+            </p>
+
+
+            <a
+                href="#coleccion"
+                class="boton-claro">
+
+                Ver colección
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PIE DE PÁGINA
+    ====================================================== -->
+
+    <footer>
+
+        <h2>
+
+            TODO ACERO
+
+        </h2>
+
+
+        <p>
+
+            MODA · ELEGANCIA · ESTILO
+
+        </p>
+
+    </footer>
+
+<!-- =====================================================
+     VISOR DE IMÁGENES
+===================================================== -->
+
+<div class="visor-imagen" id="visorImagen">
+
+    <!-- Botón cerrar -->
+
+    <button
+        class="cerrar-imagen"
+        id="cerrarImagen">
+
+        ×
+
+    </button>
+
+
+    <!-- Imagen ampliada -->
+
+    <img
+        class="imagen-grande"
+        id="imagenGrande"
+        src=""
+        alt="Joyería ampliada">
+
+</div>
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /*
+        ========================================================
+        PANTALLA DE CARGA
+
+        La página espera 2.5 segundos y después
+        desaparece la pantalla:
+
+        MODA ◆ ELEGANCIA ◆ ESTILO
+        ========================================================
+        */
+
+        window.addEventListener("load", function() {
+
+            setTimeout(function() {
+
+                document
+                    .getElementById("loader")
+                    .classList.add("ocultar");
+
+            }, 2500);
+        });
+
+/* =====================================================
+   VISOR DE FOTOGRAFÍAS
+===================================================== */
+
+const visorImagen = document.getElementById("visorImagen");
+
+const imagenGrande = document.getElementById("imagenGrande");
+
+const cerrarImagen = document.getElementById("cerrarImagen");
+
+
+
+/*
+   BUSCAMOS TODAS LAS FOTOS
+   QUE ESTÉN DENTRO DE .producto
+*/
+
+const fotos = document.querySelectorAll(".producto .foto img");
+
+
+
+/*
+   CUANDO EL CLIENTE TOCA UNA FOTO
+*/
+
+fotos.forEach(function(foto) {
+
+    foto.addEventListener("click", function() {
+
+        /*
+           Copiamos la misma imagen
+           al visor grande
+        */
+
+        imagenGrande.src = foto.src;
+
+        imagenGrande.alt = foto.alt;
+
+
+        /*
+           Mostramos el visor
+        */
+
+        visorImagen.classList.add("activo");
+
+
+        /*
+           Evitamos que la página
+           se mueva mientras está abierta
+        */
+
+        document.body.style.overflow = "hidden";
+
+    });
+
+});
+
+
+
+/*
+   CERRAR CON LA X
+*/
+
+cerrarImagen.addEventListener("click", function() {
+
+    cerrarVisor();
+
+});
+
+
+
+/*
+   CERRAR TOCANDO EL FONDO OSCURO
+*/
+
+visorImagen.addEventListener("click", function(event) {
+
+    if (event.target === visorImagen) {
+
+        cerrarVisor();
+
+    }
+
+});
+
+
+
+/*
+   CERRAR CON LA TECLA ESC
+   (especialmente útil en computadora)
+*/
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        cerrarVisor();
+
+    }
+
+});
+
+
+
+/*
+   FUNCIÓN PARA CERRAR
+*/
+
+function cerrarVisor() {
+
+    visorImagen.classList.remove("activo");
+
+    document.body.style.overflow = "";
+
+}
+
+</script>
+        
+
+</body>
+
+</html>
