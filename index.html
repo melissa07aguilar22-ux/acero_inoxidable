@@ -93,25 +93,29 @@
         }
 
 
-        .loader-text {
+.loader-text {
 
-            font-family: 'Cormorant Garamond', serif;
+    font-family: 'Cormorant Garamond', serif;
 
-            font-size: clamp(25px, 5vw, 55px);
+    /* Se adapta automáticamente al ancho de la pantalla */
+    font-size: clamp(18px, 7vw, 55px);
 
-            letter-spacing: 5px;
+    letter-spacing: clamp(1px, 1.2vw, 5px);
 
-            font-weight: 500;
-        }
+    font-weight: 500;
+
+    white-space: nowrap;
+
+}
 
 
-        .loader-text span {
+.loader-text span {
 
-            color: #c5a46d;
+    color: #c5a46d;
 
-            margin: 0 15px;
-        }
+    margin: 0 clamp(3px, 1.5vw, 15px);
 
+}
 
         .loader-sub {
 
@@ -244,34 +248,33 @@
            PORTADA
         ====================================================== */
 
-        .hero {
+ .hero {
 
-            min-height: 100vh;
+    min-height: 75vh;
 
-            background:
-                linear-gradient(
-                    rgba(20, 15, 13, 0.48),
-                    rgba(20, 15, 13, 0.55)
-                ),
-                url("assets/joya2.jpg");
+    background:
+        linear-gradient(
+            rgba(20, 15, 13, 0.48),
+            rgba(20, 15, 13, 0.55)
+        ),
+        url("assets/joya2.jpg");
 
-            background-size: cover;
+    background-size: cover;
 
-            background-position: center;
+    background-position: center;
 
-            display: flex;
+    display: flex;
 
-            align-items: center;
+    align-items: center;
 
-            justify-content: center;
+    justify-content: center;
 
-            text-align: center;
+    text-align: center;
 
-            color: white;
+    color: white;
 
-            padding: 100px 20px 50px;
-        }
-
+    padding: 80px 20px 40px;
+}
 
         .hero-content {
 
@@ -293,18 +296,20 @@
         }
 
 
-        .hero h1 {
+.hero h1 {
 
-            font-family: 'Cormorant Garamond', serif;
+    font-family: 'Cormorant Garamond', serif;
 
-            font-size: clamp(70px, 13vw, 150px);
+    font-size: clamp(48px, 10vw, 105px);
 
-            font-weight: 500;
+    font-weight: 500;
 
-            line-height: 0.8;
+    line-height: 0.9;
 
-            letter-spacing: 8px;
-        }
+    letter-spacing: clamp(3px, 0.8vw, 8px);
+
+    white-space: nowrap;
+}
 
 
         .hero p {
@@ -700,38 +705,35 @@
            PIE DE PÁGINA
         ====================================================== */
 
-        footer {
+footer {
 
-            text-align: center;
+    text-align: center;
 
-            padding: 60px 20px;
+    padding: 35px 20px;
 
-            background: #eee9e3;
-        }
+    background: #eee9e3;
+}
+footer p {
 
+    font-size: 9px;
 
-        footer h2 {
+    letter-spacing: 2px;
 
-            font-family: 'Cormorant Garamond', serif;
+    color: #777;
 
-            font-size: 35px;
+    margin-top: 6px;
+}
 
-            letter-spacing: 5px;
+footer p {
 
-            font-weight: 500;
-        }
+    font-size: 9px;
 
+    letter-spacing: 2px;
 
-        footer p {
+    color: #777;
 
-            font-size: 10px;
-
-            letter-spacing: 2px;
-
-            color: #777;
-
-            margin-top: 10px;
-        }
+    margin-top: 6px;
+}
 
 
 
@@ -788,18 +790,21 @@
             }
 
 
-            .hero {
+           .hero {
 
-                min-height: 90vh;
+    min-height: 70vh;
 
-            }
+    padding: 80px 15px 35px;
 
+}
 
-            .hero h1 {
+.hero h1 {
 
-                letter-spacing: 4px;
+    font-size: clamp(42px, 13vw, 70px);
 
-            }
+    letter-spacing: 3px;
+
+}
 
 
             .hero p {
@@ -833,20 +838,6 @@
             .destacada-texto {
 
                 padding: 60px 30px;
-
-            }
-
-
-            .loader-text {
-
-                letter-spacing: 2px;
-
-            }
-
-
-            .loader-text span {
-
-                margin: 0 5px;
 
             }
 
@@ -1162,7 +1153,7 @@
 
             <div class="foto">
                 <img
-                    src="assets/joya1.jpg"
+                    src="assets/joya1.png"
                     alt="Juego de corazones">
             </div>
 
